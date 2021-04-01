@@ -1,0 +1,59 @@
+{
+    "pets": [
+      {
+        "nome": "tobby",
+        "tipo": "cachorro",
+        "idade": 12,
+        "raca": "vira-lata",
+        "peso": 12,
+        "contato": "(81)9 9971-2863",
+        "tutor": "Sotero",
+        "vacinado": true,
+        "servicos": []
+      },
+      {
+        "nome": "laika",
+        "tipo": "cachorro",
+        "idade": 10,
+        "raca": "poodle",
+        "peso": 12,
+        "contato": "(81)9 9971-2863",
+        "tutor": "Sotero",
+        "vacinado": true,
+        "servicos": []
+      },
+      {
+        "nome": "leka",
+        "tipo": "cachorro",
+        "idade": 6,
+        "raca": "vira-lata",
+        "peso": 6,
+        "contato": "(81)9 9971-2863",
+        "tutor": "Sotero",
+        "vacinado": true,
+        "servicos": []
+      },
+      {
+        "nome": "nick",
+        "tipo": "cachorro",
+        "idade": 12,
+        "raca": "poodle",
+        "peso": 12,
+        "tutor": "João",
+        "contato": "(81) 99971-2863",
+        "vacinado": false,
+        "servicos": []
+      },
+      {
+        "nome": "bio",
+        "tipo": "gato",
+        "idade": 1,
+        "raca": "vira lata",
+        "peso": 1,
+        "tutor": "João",
+        "contato": "(81) 99971-2863",
+        "vacinado": false,
+        "servicos": []
+      }
+    ]
+  }
