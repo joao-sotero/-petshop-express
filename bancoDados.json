@@ -93,14 +93,13 @@
     },
     {
       "nome": "eva",
-      "tipo": "gato",
-      "idade": 3,
-      "raca": "American",
-      "peso": 28,
-      "tutor": "Hendy",
-      "contato": "(11) 99999-9999",
-      "vacinado": false,
-      "servicos": []
+      "tipo": "cachorro",
+      "idade": 6,
+      "raca": "Vira-lata",
+      "peso": 7,
+      "tutor": "rejane",
+      "contato": "(11) 989847999",
+      "vacinado": false
     },
     {
       "nome": "tag",
@@ -113,6 +112,5 @@
       "vacinado": false,
       "servicos": []
     }
-
   ]
 }

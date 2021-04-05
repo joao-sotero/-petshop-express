@@ -14,7 +14,7 @@ const petshop = {
         let textoListaPets = "PETSHOP \n";
 
         bancoDados.pets.forEach((pet) => {
-            textoListaPets += (`${pet.nome}, ${pet.idade} anos, ${pet.tipo}, ${pet.raca}, ${(pet.vacinado) ? 'vacinado': 'não vacinado'} \n`);
+            textoListaPets += (`${pet.nome}, ${pet.idade} anos, ${pet.tipo}, ${pet.raca}, ${(pet.vacinado) ? 'vacinado' : 'não vacinado'} \n`);
             pet.servicos.forEach((servico) => {
                 textoListaPets += (`${servico.data} - ${servico.nome} \n`);
             })
@@ -34,18 +34,18 @@ const petshop = {
     campanhaVacina: () => {
         console.log("Campanha de vacina 2021");
         console.log("vacinando...");
-    
+
         let petVacinadosCampanha = 0;
-    
+
         bancoDados.pets = bancoDados.pets.map((pet) => {
             if (!pet.vacinado) {
                 vacinarPet(pet);
                 petVacinadosCampanha++;
             }
-    
+
             return pet;
         });
-    
+
         // atualizarBanco();
         console.log(`${petVacinadosCampanha} pets foram vaciados nessa campanha!`);
     },
@@ -61,7 +61,7 @@ const petshop = {
     },
     darBanhoPet: pet => {
         pet.servicos.push({
-            'nome':'banho',
+            'nome': 'banho',
             'data': moment().format('DD-MM-YYYY')
         });
         atualizarBanco();
@@ -69,7 +69,7 @@ const petshop = {
     },
     tosarPet: pet => {
         pet.servicos.push({
-            'nome':'tosa',
+            'nome': 'tosa',
             'data': moment().format('DD-MM-YYYY')
         });
         atualizarBanco();
@@ -77,7 +77,7 @@ const petshop = {
     },
     apararUnhasPet: pet => {
         pet.servicos.push({
-            'nome':'corte de unhas',
+            'nome': 'corte de unhas',
             'data': moment().format('DD-MM-YYYY')
         });
         atualizarBanco();
@@ -93,7 +93,7 @@ const petshop = {
         let petEncontrado = bancoDados.pets.find((pet) => {
             return pet.nome == nomePet;
         });
-    
+
         return petEncontrado ? petEncontrado : `Nenhum pet encontrado com nome ${nomePet}`;
     },
     filtrarTipoPet: (tipoPet) => {
@@ -104,15 +104,15 @@ const petshop = {
         let petsEncontrados = bancoDados.pets.filter((pet) => {
             return pet.tipo == tipoPet;
         });
-    
+
         return petsEncontrados;
     },
     clientePremium: (pet) => {
         // let nome = pet.nome;
-        let {nome} = pet;
-    
+        let { nome } = pet;
+
         let nServicos = pet.servicos.length;
-    
+
         if (nServicos > 5) {
             console.log(`Olá, ${nome}! Você é um cliente especial e ganhou um descontão!`);
         } else {
@@ -120,8 +120,8 @@ const petshop = {
         }
     },
     contatoTutor: (pet) => {
-        let {nome, tutor, contato} = pet;
-        
+        let { nome, tutor, contato } = pet;
+
         return `Tutor: ${tutor}
         Contato: ${contato}
         Pet: ${nome}`;
@@ -130,12 +130,33 @@ const petshop = {
         let petsTutor = bancoDados.pets.filter((pet) => {
             return pet.tutor == nomeTutor;
         });
-        
+
         console.log(`Pets do tutor ${nomeTutor}:`)
         petsTutor.forEach((pet) => {
             console.log(`${pet.nome} - ${pet.tipo}`)
         })
-    }  
+    },
+    deletarCliente: (nome) => {
+
+        const petEncontrado = bancoDados.pets.findIndex(pet => pet.nome === nome);
+
+        if (petEncontrado < 0) {
+            console.log({ error: 'pet não foi encontrado' });
+        }
+        bancoDados.pets.splice(petEncontrado, 1);
+
+        let petsAtualizado = JSON.stringify(bancoDados, null, 2);
+        fs.writeFileSync('bancoDados.json', petsAtualizado, 'utf-8');
+    },
+    atualizarDados: (nome, mudancaPet) =>{
+        const petEncontrado = bancoDados.pets.findIndex(pet => pet.nome === nome);
+    if (petEncontrado < 0) {
+        return response.status(400).json({ error: 'pet não foi encontrado' });
+    }
+    bancoDados.pets[petEncontrado] = mudancaPet
+    let petsAtualizado = JSON.stringify(bancoDados, null, 2);
+    fs.writeFileSync('bancoDados.json', petsAtualizado, 'utf-8');
+    }
 }
 
 module.exports = petshop;
